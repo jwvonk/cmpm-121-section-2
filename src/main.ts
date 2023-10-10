@@ -14,11 +14,22 @@ SetText("click to start!")
 
 // document.addEventListener('click', () => jump())
 document.addEventListener('mousedown', () => Jump())
+document.addEventListener('keydown', (e) => { if (e.code === "Space") Jump()})
 
+
+let gameOver = true
+
+function StartGame() {
+    console.log("Game started!")
+    gameOver = false
+    score = 0
+    cactus?.classList.add("cactusMove")
+    bird?.classList.add("birdMove")
+}
 
 setInterval(function () { Main() }, 10)
 
-let gameOver = true
+
 function Main() {
     if (gameOver == false) {
         score++;
@@ -29,7 +40,6 @@ function Main() {
 }
 
 let isJumping = false
-
 function Jump() {
     if (gameOver === false) {
         if (isJumping == false) {
@@ -111,14 +121,6 @@ function CheckGameOver() {
     }
 }
 
-
-function StartGame() {
-    console.log("Game started!")
-    gameOver = false
-    score = 0
-    cactus?.classList.add("cactusMove")
-    bird?.classList.add("birdMove")
-}
 
 function SetText(s: string) {
     if (scoreText) {
